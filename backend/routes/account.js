@@ -3,16 +3,17 @@ const { authMiddleware } = require("../middleware")
 const {Account} = require("../db")
 const router = experss.Router()
 const mongoose = require("mongoose")
-//route:api/v1/account/transfer
-router.get("/balance", authMiddleware, async(req, res)=>{
+//route:api/v1/account/balance
+
+router.get("/balance", authMiddleware, async (req, res) => {
     const account = await Account.findOne({
         userId: req.userId
-    })
+    });
 
     res.json({
-        balance:account.balance
+        balance: account.balance
     })
-})
+});
 
 //router:api/v1/account/transfer
 router.post('/transfer', authMiddleware, async(req, res)=>{

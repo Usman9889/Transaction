@@ -84,7 +84,8 @@ router.post("/signin", async(req, res)=>{
         }, JWT_SECRET)
     
     res.json({
-        token : token
+        token : token,
+        name: `${user.lastName}`
         })
         return;
     }   
@@ -119,27 +120,27 @@ router.put("/", authMiddleware, async (req, res) => {
 })
 
 //route for filter user
-router.get("/bulk", async (req, res)=>{
-    const filter = req.body.filter || ""
+router.get("/bulk", async (req, res) => {
+    const filter = req.query.filter || "";
 
     const users = await User.find({
-        $or:[{
-            firstName:{
-                "$regex":filter
+        $or: [{
+            firstName: {
+                "$regex": filter
             }
-        },{
-            lastName:{
-                "$regex":filter
+        }, {
+            lastName: {
+                "$regex": filter
             }
         }]
     })
 
     res.json({
-        user:users.map(user=>({
-            username:user.username,
-            firstName:user.firstName,
-            lastName:user.lastName,
-            _id:user.id
+        user: users.map(user => ({
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            _id: user._id
         }))
     })
 })
