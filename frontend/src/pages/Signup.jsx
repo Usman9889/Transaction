@@ -39,8 +39,8 @@ export const Signup = () => {
               lastName,
               password
             });
-            localStorage.setItem("token", response.data.token)
-            navigate("/dashboard")
+            // localStorage.setItem("token", response.data.token)
+            navigate("/signin")
           }} label={"Sign up"} />
         </div>
         <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
