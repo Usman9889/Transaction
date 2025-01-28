@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { number } = require('zod')
 
 mongoose.connect("mongodb+srv://admin:usman9889a@cluster0.rrarz.mongodb.net/paytm")
 

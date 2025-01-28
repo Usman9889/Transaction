@@ -48,13 +48,13 @@ router.post('/signup', async (req,res)=>{
     })
     ///------------
 
-    const token = jwt.sign({
-        userId
-    },JWT_SECRET)
+    // const token = jwt.sign({
+    //     userId
+    // },JWT_SECRET)
 
     res.json({
         message:"User successfully created",
-        token: token
+        // token: token
     })
 })
 
@@ -80,12 +80,12 @@ router.post("/signin", async(req, res)=>{
     
     if(user){
         const token = jwt.sign({
-            userId: User._id
+            userId : user._id
         }, JWT_SECRET)
-    
+        
     res.json({
         token : token,
-        name: `${user.lastName}`
+        name: `${user.lastName}`        
         })
         return;
     }   
