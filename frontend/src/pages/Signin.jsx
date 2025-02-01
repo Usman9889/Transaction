@@ -31,7 +31,8 @@ export const Signin = () => {
             })
             localStorage.setItem("token", response.data.token)
             console.log(response.data.name);
-            navigate("/dashboard")}
+            navigate("/dashboard")  
+          }
             catch(err){
             alert("user not found")}
           }} label={"Sign in"} />
